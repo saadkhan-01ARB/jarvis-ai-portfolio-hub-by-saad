@@ -1,0 +1,41 @@
+# =====================================================
+# ALL CREDITS GO TO SAAD KHAN
+# Jarvis AI + Python Projects Hub
+# =====================================================
+
+# Core backend framework
+Flask==3.0.0
+Flask-Cors==4.0.0
+
+# AI / Knowledge system
+wikipedia==1.4.0
+
+# Voice features (Jarvis desktop version)
+SpeechRecognition==3.10.0
+pyttsx3==2.90
+pyaudio
+
+# Utilities
+requests==2.31.0
+
+⚠️ IMPORTANT NOTE (READ THIS)
+If pyaudio fails install on Windows:
+
+Run this instead:
+
+pip install pipwin
+pipwin install pyaudio
+🚀 HOW TO USE THIS FILE
+
+Inside your project:
+
+Step 1:
+
+Go to backend folder:
+
+cd backend
+Step 2:
+
+Install everything:
+
+pip install -r requirements.txt
