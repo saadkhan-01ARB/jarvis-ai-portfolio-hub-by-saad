@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About | Python Galaxy Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =======================
+   PAGE TRANSITIONS
+======================= */
+body {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* page loaded */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* page exit */
+body.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(circle at top, #050816, #000000);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ===== GALAXY BACKGROUND ===== */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png');
+    opacity: 0.12;
+    animation: moveStars 120s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveStars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-1000px, -2000px); }
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    padding: 40px;
+}
+
+header h1 {
+    color: #00f7ff;
+    text-shadow: 0 0 15px #00f7ff;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    border: 1px solid #00f7ff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #00f7ff;
+    color: black;
+    box-shadow: 0 0 20px #00f7ff;
+}
+
+/* ===== ABOUT BOX ===== */
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.card {
+    width: 600px;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #00f7ff;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px #00f7ff;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* glow heading */
+h2 {
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+    text-align: center;
+}
+
+/* text */
+p {
+    color: #ccc;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* tags */
+.skills {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tag {
+    display: inline-block;
+    margin: 5px;
+    padding: 6px 12px;
+    border: 1px solid #00f7ff;
+    border-radius: 20px;
+    color: #00f7ff;
+    font-size: 12px;
+    box-shadow: 0 0 10px #00f7ff;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: #666;
+}
+
+</style>
+</head>
+
+<script>
+/* page load animation */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+
+/* page transition on link click */
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+        const href = this.getAttribute("href");
+
+        if (href && !href.startsWith("#")) {
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500);
+        }
+    });
+});
+</script>
+
+<body>
+
+<header>
+    <h1>👨‍💻 About Me</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+    </nav>
+</header>
+
+<section class="container">
+
+    <div class="card">
+
+        <h2>Hey, I'm Saad Khan 🚀</h2>
+
+        <p>
+            I am a beginner developer who is passionate about coding and building real-world projects.
+            I have knowledge of <b>Python</b> and <b>Web Development</b> and I am continuously improving my skills.
+        </p>
+
+        <p>
+            I understand the concept of <b>vibe coding</b> — building projects by learning, experimenting,
+            and improving step by step. I also enjoy writing code on my own and creating useful tools.
+        </p>
+
+        <p>
+            My goal is to become a strong full-stack developer and build AI + automation-based systems
+            like Jarvis, web tools, and smart dashboards.
+        </p>
+
+        <div class="skills">
+
+            <span class="tag">Python</span>
+            <span class="tag">Web Development</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">JavaScript (Learning)</span>
+            <span class="tag">Automation Tools</span>
+            <span class="tag">Beginner Developer</span>
+
+        </div>
+
+        <p style="margin-top:20px;">
+            📧 Email: itxxxsaad@gmail.com
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+    ©2026     Saad khan 
+</footer>
+
+</body>
+</html>

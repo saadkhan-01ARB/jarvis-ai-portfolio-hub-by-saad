@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0a0a0a;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: #00f7ff;
+    margin-top: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #00f7ff;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #111;
+    color: #00f7ff;
+}
+
+tr:hover {
+    background: #1a1a1a;
+}
+
+button {
+    padding: 8px 12px;
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>📩 Messages Dashboard</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+
+    <tbody id="data"></tbody>
+</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0a0a0a;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: #00f7ff;
+    margin-top: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #00f7ff;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #111;
+    color: #00f7ff;
+}
+
+tr:hover {
+    background: #1a1a1a;
+}
+
+button {
+    padding: 8px 12px;
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>📩 Messages Dashboard</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+
+    <tbody id="data"></tbody>
+</table>
+
+<script>
+fetch("http://127.0.0.1:5000/messages")
+.then(res => res.json())
+.then(data => {
+
+    let table = document.getElementById("data");
+    table.innerHTML = "";
+
+    data.forEach(row => {
+        table.innerHTML += `
+            <tr>
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td>${row[2]}</td>
+                <td>${row[3]}</td>
+            </tr>
+        `;
+    });
+
+});
+</script>
+
+</body>
+</html>
+

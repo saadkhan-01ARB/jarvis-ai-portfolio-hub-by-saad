@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TECH HUB</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =======================
+   PAGE TRANSITIONS
+======================= */
+body {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* page loaded */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* page exit */
+body.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* =======================
+   GLOBAL
+======================= */
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background: radial-gradient(circle at top, #050816, #000000);
+    overflow-x: hidden;
+}
+
+/* =======================
+   ANIMATED STARS BACKGROUND (FIXED)
+======================= */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png');
+    opacity: 0.15;
+    animation: starMove 120s linear infinite;
+
+    pointer-events: none; /* 🔥 FIX: allows clicking */
+    z-index: 0;
+}
+
+@keyframes starMove {
+    from { transform: translate(0,0); }
+    to { transform: translate(-1000px, -2000px); }
+}
+
+/* =======================
+   ENSURE CONTENT ABOVE BACKGROUND
+======================= */
+header, .hero, .projects, footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* =======================
+   FADE IN PAGE
+======================= */
+header, .hero, .projects {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================
+   HEADER
+======================= */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-size: 42px;
+    color: #8b172b;
+    text-shadow: 0 0 10px #a01e2f, 0 0 40px #8b1922;
+    animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 10px #00f7ff; }
+    to { text-shadow: 0 0 25px #ff00ff, 0 0 50px #00f7ff; }
+}
+
+/* =======================
+   NAV
+======================= */
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid #00f7ff;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #00f7ff;
+    color: black;
+    box-shadow: 0 0 20px #00f7ff;
+}
+
+/* =======================
+   HERO
+======================= */
+.hero {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    color: #910000;
+    text-shadow: 0 0 10px #910000;
+    animation: floatText 3s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero p {
+    color: #aaa;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* =======================
+   BUTTON
+======================= */
+.btn {
+    margin-top: 25px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #00f7ff, #ff00ff);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #00f7ff;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 40px #ff00ff;
+}
+
+/* =======================
+   PROJECT CARDS
+======================= */
+.projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    gap: 20px;
+}
+
+.card {
+    width: 250px;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #00f7ff;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px #00f7ff;
+    transition: 0.4s ease;
+    animation: cardEntry 1s ease forwards;
+    opacity: 0;
+}
+
+/* stagger animation */
+.card:nth-child(1){ animation-delay: 0.2s; }
+.card:nth-child(2){ animation-delay: 0.4s; }
+.card:nth-child(3){ animation-delay: 0.6s; }
+
+@keyframes cardEntry {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 0 30px #ff00ff;
+    border-color: #ff00ff;
+}
+
+.card h3 {
+    color: #00f7ff;
+}
+
+/* =======================
+   FLOATING PARTICLES
+======================= */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #00f7ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00f7ff;
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* =======================
+   FOOTER
+======================= */
+footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 20px;
+    color: #666;
+}
+
+</style>
+</head>
+
+<script>
+/* page load animation */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+
+/* page transition on link click */
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+        const href = this.getAttribute("href");
+
+        if (href && !href.startsWith("#")) {
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500);
+        }
+    });
+});
+</script>
+
+<body>
+
+<!-- floating particles -->
+<div class="particle" style="left:10%; animation-delay:0s;"></div>
+<div class="particle" style="left:30%; animation-delay:2s;"></div>
+<div class="particle" style="left:50%; animation-delay:1s;"></div>
+<div class="particle" style="left:70%; animation-delay:3s;"></div>
+<div class="particle" style="left:90%; animation-delay:1.5s;"></div>
+
+<header>
+    <h1>🌌 C O D E R S</h1>
+    <p>CODiNG TO SOLVE PROBLEMS</p>
+    <p>THiS WEB AND PROJECTS ARE JUST FOR LEARNiNG AND PORTFOLiO PURPOSE</p>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Welcome to the Future 🚀</h2>
+    <p>Explore AI tools, automation systems and futuristic Python projects.</p>
+
+    <button class="btn" onclick="location.href='projects.html'">
+        Explore Projects
+    </button>
+</section>
+
+<section class="projects" id="projects">
+
+    <a href="jarvis.html">
+    <div class="card">
+        <h3>🤖 Jarvis AI</h3>
+        <p>Voice-controlled AI assistant.</p>
+    </div>
+    </a>
+
+    <div class="card">
+        <h3>💰 Expense Tracker</h3>
+        <p>Smart financial tracking system.</p>
+    </div>
+
+    <div class="card">
+        <h3>🕷 Web Scraper</h3>
+        <p>Automated data extraction tool.</p>
+    </div>
+
+</section>
+
+<footer>
+    ©2026 Saad Khan
+</footer>
+
+</body>
+</html>
